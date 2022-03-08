@@ -1,5 +1,9 @@
 package pkg
 
+type Lookup struct {
+	ID string `json:"id"`
+}
+
 type Balance struct {
 	ID             int    `json:"id"`
 	Currency       string `json:"currency"`

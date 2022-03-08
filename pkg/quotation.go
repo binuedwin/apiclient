@@ -45,10 +45,10 @@ type Quotation struct {
 type Source struct {
 	CountryISOCode string `json:"country_iso_code"`
 	Currency       string `json:"currency"`
-	Amount         int64  `json:"amount"`
+	Amount         *int64 `json:"amount"`
 }
 
 type CurrencyAmount struct {
-	Amount   *string `json:"amount"`
-	Currency string  `json:"currency"`
+	Amount   *int64 `json:"amount"`
+	Currency string `json:"currency"`
 }
