@@ -17,7 +17,3 @@ type VerificationStatus struct {
 type VerificationStatusRequest struct {
 	CreditPartyIdentifier CreditPartyIdentifier `json:"credit_party_identifier"`
 }
-
-type CreditPartyIdentifier struct {
-	MSISDN string `json:"msisdn"`
-}

@@ -13,55 +13,6 @@ type Payer struct {
 	TransactionTypes     map[string]interface{} `json:"transaction_types,omitempty"`
 }
 
-type TransactionTypes struct {
-	C2C BaseTransactionInfomation `json:"C2C,omitempty"`
-	B2C BaseTransactionInfomation `json:"B2C,omitempty"`
-}
-
-// TransactionTypes requires custom unmarshal due to it's dynamic json values
-// func ToTransactionType(data map[string]interface{}) (TransactionType, error) {
-// 	transMarshal := func(data interface{}, v interface{}) error {
-// 		dataBytes, err := json.Marshal(data)
-// 		if err != nil {
-// 			return err
-// 		}
-
-// 		return json.Unmarshal(dataBytes, v)
-// 	}
-
-// 	if data, ok := data["C2C"]; ok {
-// 		var c2c C2C
-// 		if err := transMarshal(data, &c2c); err != nil {
-// 			return nil, err
-// 		}
-
-// 		return TransactionType(&c2c), nil
-// 	}
-
-// 	if _, ok := data["B2C"]; ok {
-// 		var b2c B2C
-// 		if err := transMarshal(data, &b2c); err != nil {
-// 			return nil, err
-// 		}
-
-// 		return TransactionType(&b2c), nil
-// 	}
-
-// 	return nil, errors.New("could not parse the transaction type")
-// }
-
-type C2C struct {
-	BaseTransactionInfomation
-}
-
-func (ts *C2C) transactionName() string { return "C2C" }
-
-type B2C struct {
-	BaseTransactionInfomation
-}
-
-func (ts *B2C) transactionName() string { return "B2C" }
-
 type BaseTransactionInfomation struct {
 	MinTransactionAmount            string                  `json:"minimum_transaction_amount"`
 	MaxTransactionAmount            string                  `json:"maximum_transaction_amount"`

@@ -1,23 +1,5 @@
 package pkg
 
-/*
-{
-    "external_id": "1481184321405",
-    "payer_id": "1",
-    "mode": "SOURCE_AMOUNT",
-    "transaction_type": "C2C",
-    "source": {
-        "amount": "10",
-        "currency": "EUR",
-        "country_iso_code": "FRA"
-    },
-    "destination": {
-        "amount": null,
-        "currency": "USD"
-    }
-}
-*/
-
 type CreateQuotationRequest struct {
 	ExternalID      string         `json:"external_id"`
 	PayerID         string         `json:"payer_id"`

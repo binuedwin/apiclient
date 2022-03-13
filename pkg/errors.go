@@ -18,7 +18,7 @@ func (e *Errors) ToError() error {
 	if len(e.Errors) > 0 {
 		var Error string
 		for _, err := range e.Errors {
-			Error += fmt.Sprintf("%s: %s;", err.Code, err.Message)
+			Error += fmt.Sprintf(" %s: %s;", err.Code, err.Message)
 		}
 
 		return errors.New(Error[:len(Error)-1])

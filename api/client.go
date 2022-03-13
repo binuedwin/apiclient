@@ -23,11 +23,20 @@ func NewThunesClient(baseUrl, apiKey, apiSecret string) *ThunesClient {
 	}
 }
 
-func (tc *ThunesClient) NewRequest(method, url string, body io.Reader, expectedStatus int) ([]byte, error) {
+func (tc *ThunesClient) NewRequest(method, url string, body io.Reader, expectedStatus int, queryParams map[string]string) ([]byte, error) {
 	// construct the request
 	req, err := http.NewRequest(http.MethodGet, tc.baseUrl+url, body)
 	if err != nil {
 		return nil, err
+	}
+
+	// if query params exist, add them to the request
+	if len(queryParams) != 0 {
+		q := req.URL.Query()
+		for key, value := range queryParams {
+			q.Add(key, value)
+		}
+		req.URL.RawQuery = q.Encode()
 	}
 
 	if body != nil {
